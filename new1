@@ -1,0 +1,14 @@
+---
+ - hosts: appserv
+   remote_user: root
+   gather_facts: true
+   tasks:
+   - name: install apache
+     apt: name=apache2 state=latest
+   - name: install tomcat
+     apt: name=tomcat7 state=latest
+ - hosts: webserv
+   gather_facts: false
+   tasks:
+   - name: install httpd
+     yum: name=httpd state=latest
